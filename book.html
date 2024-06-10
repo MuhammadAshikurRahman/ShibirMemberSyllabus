@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book List</title>
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  
+<!-- Include Font -->
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+<style>
+    /* CSS Styles */
+    *{
+    font-family: "Tiro Bangla" , serif;
+  }
+    body {
+        font-family: "Tiro Bangla" , serif;
+        position: relative; /* Set body position to relative */
+    }
+    .header {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .search-box {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .book-link {
+        display: block;
+        padding: 10px;
+        background-color: #FD2C17;    
+        margin-bottom: 20px;
+        text-decoration: none;
+        text-align: center; /* Center-align the text */
+        border-radius: 5px; /* Rounded corners */
+        transition: all 0.3s ease; /* Smooth transition */
+    }
+    .book-link:hover {
+        transform: translateY(-3px); /* Move button up by 3px on hover */
+        background-color: green; /* Change background color to green on hover */
+    }
+    #bookList a {
+        color: #FFFFFF; /* White text color */
+    }
+    #bookList {
+        min-width: 300px; /* Set minimum width of the book list */
+        max-width: 700px; /* Allow maximum width to expand as needed */
+        margin: 0 auto; /* Center the book list horizontally */
+        border-radius: 5px; /* Rounded corners */
+    }
+    .error-button {
+        display: inline-block;
+        padding: 10px;
+        background-color: #FD2C17;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Smooth transition */
+    }
+    .error-button:hover {
+        transform: translateY(-3px); /* Move button up by 3px on hover */
+        background-color: green; /* Change background color to green on hover */
+    }
+    .error-button-container {
+        text-align: center; /* Center-align the button */
+    }
+    .last-clicked {
+        background-color:  #9B59B6 !important; /* Yellow background color for last clicked button */
+    }
+    /* Styles for Message */
+    #message {
+        position: fixed; /* Position fixed so it's always visible */
+        bottom: 20px; /* Distance from the bottom of the screen */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Center horizontally */
+        background-color: #333; /* Background color of the message */
+        color: white; /* Text color */
+        padding: 10px 20px; /* Padding */
+        border-radius: 5px; /* Rounded corners */
+        display: none; /* Initially hidden */
+        max-width: 400px;
+        min-width: 200px;
+        z-index: 999; /* Ensure it's above other content */
+    }
+    #message p {
+        margin: 0; /* Remove default margin */
+        font-size: 20px; /* Increased font size */
+        text-align: center;
+      
+    }
+    #closeBtn {
+        position: absolute; /* Position relative to parent */
+        bottom: 5px; /* Distance from bottom */
+        right: 5px; /* Distance from left */
+        cursor: pointer; /* Cursor style */
+        color: white; /* Text color */
+        font-weight: bold; /* Bold text */
+        font-size: 25px; /* Increased font size */
+        justify-content: center;
+    }
+  
+  
+    /* Styles for Info Button */
+    #infoBtn {
+        position: absolute; /* Position absolute */
+        top: 0px; /* Distance from top */
+        right: 20px; /* Distance from right */
+        color: black; /* Text color */
+        border-radius: 50%; /* Rounded shape */
+        cursor: pointer; /* Cursor style */
+        font-size: 20px; /* Font size */
+    }
+</style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header">
+    বইসমূহ
+</div>
+
+<!-- Search Box Section -->
+<div class="search-box">
+    <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for books...">
+</div>
+
+<!-- Error Button Section -->
+<div class="error-button-container">
+    <button class="error-button">ত্রুটি থাকলে জানান</button>
+</div>
+
+<!-- Book List Section -->
+<div id="bookList">
+   <a class="book-link" href="https://www.icsbook.info/read-book/80">কুরআন ব্যাখ্যার মূলনীতি- শাহ ওয়ালিউল্লাহ দেহলভী</a>
+   <a class="book-link" href="https://www.icsbook.info/read-book/132">তাফহীমুল কুরআনের ভূমিকা</a>
+   <a class="book-link" href="https://www.icsbook.info/read-book/193">হাদীস সংকলনের ইতিহাস- মাওলানা মুহাম্মাদ আবদুর রহীম</a>
+   <a class="book-link" href="https://www.icsbook.info/read-book/89">কোরআন ও সুন্নাহ : স্থান-কাল প্রেক্ষিত- ড. তাহা জাবির আল আলওয়ানী, ড. ইমাদ আল্ দীন খলিল</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/192">হাদীসের নামে জালিয়াতি : প্রচলিত মিথ্যা হাদীস ও ভিত্তিহীন কথা- ড. আবদুল্লাহ জাহাঙ্গীর</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/307">একমাত্র ধর্ম- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/308">কোরআনের চারটি মৌলিক পরিভাষা- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/309">ভাঙ্গা ও গড়া- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/310">হেদায়াত- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/314">সীরাতে সরওয়ারে আলম (১ম খণ্ড)- সাইয়েদ আবুল আ’লা মওদূদীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/318">ইসলামী রেনেসাঁ আন্দোলন- সাইয়েদ আবুল আ’লা মওদূদীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/320">ইসলামী সমাজ বিপ্লবের ধারা- সাইয়েদ কুতুব শহীদ</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/321">ইসলাম ও জাহেলিয়াতের চিরন্তন দ্বন্দ্ব- আব্বাস আলী খানী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/640">ইসলাম ও পাশ্চাত্য সভ্যতার দ্বন্দ্ব- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/322">একটি আদর্শবাদী দলের পতনের কারণঃ তার থেকে বাঁচার উপায়- আব্বাস আলী খান</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/323">আধুনিক যুগে ইসলামী বিপ্লব- মুহাম্মদ কামারুজ্জামানী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/324">ইসলামী সংগঠন- এ. কে. এম. নাজির আহমদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/326">আর রাহীকুল মাখতুম- আল্লামা ছফিউর রহমান মোবারকপুরী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/327">সীরাতে ইবনে হিশাম- ইবনে হিশাম</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/329">মানবতার বন্ধু মুহাম্মদ রসূলুল্লাহ (স.)- নঈম সিদ্দিকী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/330">রাসূলুল্লাহর (সা) মক্কার জীবন- মাওলানা মতিউর রহমান নিজামীী</a>
+  <a class="book-link" href="https://www.icsbook.info/search?search_box=%E0%A6%86%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AC%E0%A7%87+%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%82%E0%A6%B2%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8+%E0%A6%95%E0%A6%A5%E0%A6%BE">আসহাবে রাসূলের জীবনকথা</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/331">ওহাবী আন্দোলন- আব্দুল মওদুদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/332">আজাদী আন্দোলনে আলেম সমাজের সংগ্রামী ভূমিকা- জুলফিকার আহমদ কিসমতীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/333">মুহাররের শিক্ষা- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/336" >খউসমানী খিলাফাতের ইতিকথা- এ. কে. এম নাজির আহমদ</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/335">ওমর ইবনে আব্দুল আজীজ- রশীদ আখতার নদভী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/337">ইমাম ইবনে তাইমিয়ার সংগ্রামী জীবন- আব্দুল মান্নান তালিবী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/338">বাংলার মুসলমানদের ইতিহাস- আব্বাস আলী খানী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/339">আমাদের জাতিসত্তার বিকাশধারা- মোহাম্মদ আবদুল মান্নানী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/340">দার্শনিক শাহ্ ওয়ালিউল্লাহ মুহাদ্দিসে দেহলভী ও তাঁর চিন্তাধারা- জুলফিকার আহমদ কিসমতীী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/341">দি ইন্ডিয়ান মুসলমানস- ডব্লিউ, ডব্লিউ হান্টার</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/342">ইসলামের শক্তির উৎস- সাইয়েদ আবুল আ’লা মীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/343">জীবন সায়াহ্নে মানবতার রূপ- মাওলানা আবুল কালাম আজাদ</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/365">ইসলামের পুনর্জাগরণে ইখওয়ানুল মুসলিমুনের ভূমিকা- খলিল আহমদ হামেদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/364"> আধুনিক যুগ, ইসলাম, কৌশল ও কর্মসূচি- প্রফেসর ড. ইউসুফ কারযাভী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/363"> মাওলানা মওদূদী একটি জীবন একটি ইতিহাস- আব্বাস আলী খানী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/362"> ইসলামী ঐক্য ইসলামী আন্দোলন- অধ্যাপক গোলাম আযম</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/365"> বাংলাদেশে ইসলামী ঐক্যপ্রচেষ্টার ইতিহাস- অধ্যাপক গোলাম আযমী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/361">পলাশী থেকে বাংলাদেশ- অধ্যাপক গোলাম আযমী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/360">মুসলিম মানসে সংকট- আব্দুলহামিদ আহমদ আবুসুলাইমান</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/359"> জামায়াতে ইসলামীর ইতিহাস- আব্বাস আলী খানী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/286">স্মৃতি অমলিন (১ম খণ্ড)- বিআইসিএস</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/28">সংবিধান- বিআইসিএস</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/27">স্কর্মপদ্ধতি- বিআইসিএস</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/367">স্ইসলামী দাওয়াত ও কর্মনীতি- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/368">দা’য়ী ইলাল্লাহ্ দা’ওয়াত ইলাল্লাহ্- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/369">স্দাওয়াতে দ্বীন ও তার কর্মপন্থা- মাওলানা আমীন আহসান ইসলাহী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/371">ইসলামী নেতৃত্বের গুণাবলী- খুররম মুরাদ</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/372">ইসলামী নেতৃত্ব- এ কে এম নাজির আহমদ</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/30">ইসলামী আন্দোলনের নৈতিক ভিত্তি- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/32">চরিত্র গঠনের মৌলিক উপাদান- নঈম সিদ্দিকী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/373">বাইয়াতের হাকিকাত- অধ্যাপক গোলাম আযম</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/374"> ইসলামের সামাজিক বিধান- আল্লামা জামাল আল বাদাবী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/375">পর্দা ও ইসলাম- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/376">আদাবে জিন্দেগী- আল্লামা ইউসুফ ইসলাহী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/377">মাতা-পিতা ও সন্তানের অধিকার- আল্লামা ইউসুফ ইসলাহী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/378">সুবহে সাদিক- খুররম জাহ্ মুরাদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/379">ইসলামের বুনিয়াদী শিক্ষা- সাইয়েদ আবুল আ’লা মওদূদীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/383">সুদ ও আধুনিক ব্যাংকিং- সাইয়েদ আবুল আ’লা মওদূদীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/643">সুদ সমাজ অর্থনীতি- অধ্যাপক মুহাম্মদ শরীফ হুসাইনী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/384">ইসলাম ও অর্থনৈতিক চ্যালেঞ্জ- ড. এম. উমর চাপরাী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/385">ইসলামী অর্থনীতি নির্বাচিত প্রবন্ধ- শাহ্ মুহাম্মদ হাবীবুর রহমান</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/388">আল-কুরআনে রাষ্ট্র ও সরকার- মওলানা মুহাম্মাদ আবদুর রহীমী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/389">খেলাফত ও রাজতন্ত্র- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/390">ইসলামী রাষ্ট্রে অমুসলিমদের অধিকার- সাইয়েদ আবুল আ’লা মওদূদীী</a>
+  
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/391">ইসলামে মানবাধিকার- মুহাম্মদ সালাহুদ্দীন</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/392">শরিয়তী রাষ্ট্রব্যবস্থা- ইমাম ইবনে তাইমিয়াীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/642">একটি সত্যনিষ্ঠ দলের প্রয়োজন- সাইয়েদ আবুল আ’লা মওদূদীীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/394">মক্কার পথ- মুহাম্মদ আসাদীী</a>
+  
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/395">ইসলামী সংস্কৃতির মর্মকথা- সাইয়েদ আবুল আ’লা মীীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/271">শিক্ষা সাহিত্য সংস্কৃতি- মওলানা মুহাম্মাদ আবদুর রহীমীী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/253">আসান ফেকাহ (১ম খণ্ড)- মাওলানা ইউসুফ ইসলাহী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/280">আসান ফেকাহ (২য় খণ্ড)- মাওলানা ইউসুফ ইসলাহী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/397">ইসলামী উসুলে ফিকাহ- ড. তাহা জাবির আল-আলওয়ানী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/398">সুন্নাত ও বিদয়াত- মাওলানা মুহাম্মদ আবদুর রহীম</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/584">মতবিরোধপূর্ণ বিষয়ে সঠিক পন্থা অবলম্বনের উপায়- শাহ ওয়ালীউল্লাহ দেহলভী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/262">আল্লাহর রসূল কিভাবে নামাজ পড়তেন- আল্লামা হাফিয ইবনুল কায়্যিম (অনুবাদ : আব্দুস শহীদ নাসিম)</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/281">কবীরা গুনাহ- ইমাম আযযাহাবী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/399">গীবত- ইমাম গাজ্জালী</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/302">ইসলাম ও অন্যান্য মতবাদ- ড. মুহাম্মাদ নূরুল ইসলামহীম</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/306">ধর্মনিরপেক্ষ মতবাদ- অধ্যাপক গোলাম আযম</a>
+  
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/305">ইসলাম ও জাতীয়তাবাদ- সাইয়েদ আবুল আ’লা মওদূদী</a>
+  <a class="book-link" href="https://www.icsbook.info/">বাংলাদেশের সংবিধান</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/686">Time Management- Ismail Kamdar</a>
+  <a class="book-link" href="https://www.icsbook.info/">তথ্যপ্রযুক্তির সহজ পাঠ- আইসিএস পাবলিকেশন</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/646">A Young Muslim’s Guide to Religions in the world- Dr. Syed Sajjad Hussain (BIIT)</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/248">ক্যারিয়ার বিকশিত জীবনের দ্বার- আইসিএস পাবলিকেশন</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/278">সফল বিতার্কিক বক্তা ও নেতা হওয়ার কৌশল- আইসিএস পাবলিকেশন</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/306">Road to Higher Study- ICS Publication</a>
+  <a class="book-link" href="https://www.icsbook.info/pdf-book/577">স্পেনের কান্না- মুফতী তকী উসমানী</a>
+  <a class="book-link" href="https://www.icsbook.info/">জাতীয় শিক্ষা স্মারক-২০১৮</a>
+  
+  
+    <!-- Add more book links as needed -->
+</div>
+
+<!-- Information Button -->
+<div id="infoBtn"><i class="fas fa-info-circle"></i></div>
+
+<!-- Message Section -->
+<div id="message">
+    <span id="closeBtn">X</span> <!-- Close button -->
+    <p>বাটনে ক্লিক করার পর ডাউনলোড অপশন এবং অনলাইনে পড়ার অপশন পেয়ে যাবেন</p> <!-- Message content -->
+</div>
+
+<!-- JavaScript Code -->
+<script>
+    // JavaScript Code
+    // Variable to store the last clicked link
+    var lastClickedLink = null;
+
+    // Function to handle click event on links
+    function handleClick(event) {
+        // Remove last-clicked class from previous last clicked link if exists
+        if (lastClickedLink) {
+            lastClickedLink.classList.remove('last-clicked');
+        }
+        // Add last-clicked class to the clicked link
+        event.target.classList.add('last-clicked');
+        // Update lastClickedLink variable to store the current clicked link
+        lastClickedLink = event.target;
+    }
+
+    // Add event listeners to all book links
+    var bookLinks = document.querySelectorAll('.book-link');
+    bookLinks.forEach(function(link) {
+        link.addEventListener('click', handleClick);
+    });
+
+    function searchBooks() {
+        var input, filter, bookList, bookLinks, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        bookList = document.getElementById('bookList');
+        bookLinks = bookList.getElementsByTagName('a');
+
+        for (i = 0; i < bookLinks.length; i++) {
+            txtValue = bookLinks[i].textContent || bookLinks[i].innerText;
+            if (fuzzySearch(txtValue.toUpperCase(), filter)) {
+                bookLinks[i].style.display = '';
+            } else {
+                bookLinks[i].style.display = 'none';
+            }
+        }
+    }
+
+    function fuzzySearch(text, query) {
+        // Fuzzy search algorithm (Levenshtein distance)
+        if (text.includes(query)) {
+            return true; // Direct match
+        }
+
+        const maxDistance = Math.ceil(query.length / 4);
+        const distances = [];
+
+        for (let i = 0; i <= text.length; i++) {
+            let row = [i];
+            for (let j = 0; j < query.length; j++) {
+                if (i === 0) {
+                    row.push(j + 1);
+                } else {
+                    row.push(0);
+                }
+            }
+            distances.push(row);
+        }
+
+        for (let i = 1; i <= text.length; i++) {
+            for (let j = 1; j <= query.length; j++) {
+                const cost = text[i - 1] === query[j - 1] ? 0 : 1;
+                distances[i][j] = Math.min(
+                    distances[i - 1][j] + 1,
+                    distances[i][j - 1] + 1,
+                    distances[i - 1][j - 1] + cost
+                );
+            }
+        }
+
+        return Math.min(...distances[text.length]) <= maxDistance;
+    }
+
+    // Function to show the message
+    function showMessage() {
+        var message = document.getElementById('message');
+        message.style.display = 'block';
+        // Auto close message after 6 seconds
+        setTimeout(hideMessage, 6000);
+    }
+
+    // Function to hide the message
+    function hideMessage() {
+        var message = document.getElementById('message');
+        message.style.display = 'none';
+    }
+
+    // Event listener for the information button
+    var infoBtn = document.getElementById('infoBtn');
+    infoBtn.addEventListener('click', showMessage);
+
+    // Event listener for the close button
+    var closeBtn = document.getElementById('closeBtn');
+    closeBtn.addEventListener('click', hideMessage);
+  
+    // Function to force desktop view if requested
+    document.addEventListener('DOMContentLoaded', function () {
+        const bookLinks = document.querySelectorAll('.book-link');
+
+        bookLinks.forEach(function (link) {
+            const url = new URL(link.href);
+            if (url.searchParams.get('desktop') === 'true') {
+                forceDesktopView();
+            }
+        });
+    });
+
+    function forceDesktopView() {
+        var viewport = document.querySelector("meta[name=viewport]");
+        if (viewport) {
+            viewport.setAttribute('content', 'width=1024');
+        }
+    }
+ 
+</script>
+
+
+
+</body>
+</html>

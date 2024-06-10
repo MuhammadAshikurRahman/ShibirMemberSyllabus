@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আল কুরআন</title>
+  <!-- Include Font  -->
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+<style>
+    /* CSS Styles */
+   *{
+    font-family: "Tiro Bangla" , serif;
+  }
+    body {
+        font-family: "Tiro Bangla" , serif;
+        margin: 0;
+        padding: 0;
+    }
+    .header {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .button-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .button-container button {
+        margin: 0 10px;
+    }
+    .bottom-divs {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        text-align: center; /* Center-align the content */
+    }
+  
+    .bottom-divs h1,
+    .bottom-divs p {
+     margin: 0; /* Remove default margin */
+     padding: 10px;
+    }
+    .bottom-divs iframe {
+        width: 95%;
+        height: 800px;
+        
+    }
+  .bottom-divs p{
+      font-size: 25px;
+      font-weight: bold;
+  }
+ 
+</style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header">
+    <h1>আল কুরআন</h1>
+</div>
+
+<!-- Button Container -->
+<div class="button-container">
+    <button onclick="showDiv('tajweed')">তাজবিদ</button>
+    <button onclick="showDiv('quran')">কুরআন সহিহ করে তিলাওয়াত</button>
+    <button onclick="showDiv('ilmul_quran')">ইলমুল কুরআন</button>
+    <button onclick="showDiv('tilawat')">অর্থসহ তিলাওয়াত</button>
+</div>
+
+<!-- Bottom Divs Section -->
+<div class="bottom-divs" id="tajweed">
+    <div>
+        <h1>তাজবিদ</h1>
+        <p><a href="https://drive.google.com/uc?export=download&id=12Z9jGJP31A-TRtaif-n25W86qTIBPI5V">Download</a></p>
+        <iframe src="https://drive.google.com/file/d/12Z9jGJP31A-TRtaif-n25W86qTIBPI5V/preview" frameborder="0"></iframe>
+    </div>
+</div>
+
+<div class="bottom-divs" id="quran">
+    <div>
+        <h1>কুরআন সহিহ করে তিলাওয়াত</h1>
+        <p><a href="https://play.google.com/store/apps/details?id=com.alquran.tafhimul_quran&hl=en_ZA">Download App</a></p>
+        <p><a href="https://quran.com/bn/">WebSite</a></p>
+        <iframe src="https://drive.google.com/file/d/13E63bh6qYoywjwEuuVoJaiLlvwhAvxSO/preview" frameborder="0"></iframe>
+    </div>
+</div>
+
+<div class="bottom-divs" id="ilmul_quran">
+    <div>
+        <h1>ইলমুল কুরআন</h1>
+        <p><a href="https://play.google.com/store/apps/details?id=islamicbooks.tafhim.bangla1&pli=1">Download App</a></p>
+        <iframe src="https://www.hadithbd.com/quran/tafsir/?sura=1" frameborder="0"></iframe>
+    </div>
+</div>
+
+<div class="bottom-divs" id="tilawat">
+    <div>
+        <h1>অর্থসহ তিলাওয়াত</h1>
+        <p><a href="https://play.google.com/store/apps/details?id=com.alquran.tafhimul_quran&hl=en_ZA">Download App</a></p>
+        <p><a href="https://www.quraanshareef.org/">WebSite</a></p>
+        <iframe src="https://drive.google.com/file/d/13E63bh6qYoywjwEuuVoJaiLlvwhAvxSO/preview" frameborder="0"></iframe>
+    </div>
+</div>
+
+<!-- JavaScript Code -->
+<script>
+    function showDiv(divId) {
+        // Scroll to the selected div
+        var selectedDiv = document.getElementById(divId);
+        selectedDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

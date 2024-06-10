@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>নোট</title>
+  
+<!-- Include Font -->
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  
+<style>
+/* CSS Styles */
+* {
+    font-family: "Tiro Bangla", serif;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Tiro Bangla", serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, p {
+    text-align: center; 
+}
+
+.note {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    margin: 20px auto; /* Center the container */
+}
+
+.note a {
+    text-decoration: none; /* Remove underline from links */
+    padding: 15px;
+    font-size: 25px;
+    color: white;
+    background-color: red;
+    margin: 10px 0; /* Add margin on top and bottom */
+    display: block; /* Make each link a block element */
+    border-radius: 5px; /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+a:hover {
+    background-color: green;
+    position: relative; /* Change position to relative */
+    top: -3px; /* Move up by 3px on hover */
+}
+
+/* Media queries for responsiveness */
+@media (min-width: 600px) {
+    .note a {
+        margin: 10px auto; /* Center the links horizontally on larger screens */
+        width: 80%;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>নোট</h1>
+<div class="note">
+    <p>নোট ডাউনলোড করুন</p>
+    <a href="https://drive.google.com/uc?export=download&id=1jAyxQIR499rosPtgA5OLhmlI_VCNR4nX">দারসুল কুরআন</a>
+    <a href="https://drive.google.com/uc?export=download&id=1ZLMUNm70p5MeZdP_zZUPrhcu0xzaE_tY">দারসুল হাদিস</a>
+    <a href="https://drive.google.com/uc?export=download&id=1bdl06im5P13CZdTwsAFfNpDZmeIIvwRP">আলোচনা নোট</a>
+    <a href="https://drive.google.com/uc?export=download&id=1c7rumn-nNrf5yC5ibRcGEAc6FeSUxTFx">সাহিত্য নোট</a>
+</div>
+
+</body>
+</html>

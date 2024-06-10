@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আল হাদিস</title>
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+<!-- Include Font  -->
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+<style>
+    /* CSS Styles */
+    *{
+    font-family: "Tiro Bangla" , serif;
+  }
+    body {
+        font-family: "Tiro Bangla" , serif;
+        position: relative; /* Set body position to relative */
+        font-size: 19px;
+    }
+    .header {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .search-box {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .book-link {
+        display: block;
+        padding: 10px;
+        background-color: #FD2C17;    
+        margin-bottom: 20px;
+        text-decoration: none;
+        text-align: center; /* Center-align the text */
+        border-radius: 5px; /* Rounded corners */
+        transition: all 0.3s ease; /* Smooth transition */
+    }
+    .book-link:hover {
+        transform: translateY(-3px); /* Move button up by 3px on hover */
+        background-color: green; /* Change background color to green on hover */
+    }
+    #bookList a {
+        color: #FFFFFF; /* White text color */
+    }
+    #bookList {
+        min-width: 300px; /* Set minimum width of the book list */
+        max-width: 700px; /* Allow maximum width to expand as needed */
+        margin: 0 auto; /* Center the book list horizontally */
+        border-radius: 5px; /* Rounded corners */
+    }
+    .error-button {
+        display: inline-block;
+        padding: 10px;
+        background-color: #FD2C17;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Smooth transition */
+    }
+    .error-button:hover {
+        transform: translateY(-3px); /* Move button up by 3px on hover */
+        background-color: green; /* Change background color to green on hover */
+    }
+    .error-button-container {
+        text-align: center; /* Center-align the button */
+    }
+    .last-clicked {
+        background-color:  #9B59B6 !important; /*  background color for last clicked button */
+    }
+    /* Styles for Message */
+    #message {
+        position: fixed; /* Position fixed so it's always visible */
+        bottom: 20px; /* Distance from the bottom of the screen */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Center horizontally */
+        background-color: #333; /* Background color of the message */
+        color: white; /* Text color */
+        padding: 10px 20px; /* Padding */
+        border-radius: 5px; /* Rounded corners */
+        display: none; /* Initially hidden */
+        max-width: 400px;
+        min-width: 200px;
+        z-index: 999; /* Ensure it's above other content */
+    }
+    #message p {
+        margin: 0; /* Remove default margin */
+        font-size: 20px; /* Increased font size */
+        text-align: center;
+      
+    }
+    #closeBtn {
+        position: absolute; /* Position relative to parent */
+        bottom: 5px; /* Distance from bottom */
+        right: 5px; /* Distance from left */
+        cursor: pointer; /* Cursor style */
+        color: white; /* Text color */
+        font-weight: bold; /* Bold text */
+        font-size: 25px; /* Increased font size */
+        justify-content: center;
+    }
+  
+  
+    /* Styles for Info Button */
+    #infoBtn {
+        position: absolute; /* Position absolute */
+        top: 10px; /* Distance from top */
+        right: 20px; /* Distance from right */
+        color: black; /* Text color */
+        border-radius: 50%; /* Rounded shape */
+        cursor: pointer; /* Cursor style */
+        font-size: 25px; /* Font size */
+    }
+  
+  
+  
+  table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold; /* Set text bold */
+        color: red; /* Set text color to red */
+    }
+     /* Tooltip CSS */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        top: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+  
+</style>
+</head>
+<body>
+  
+
+<!-- Header Section -->
+  
+  <div class="">
+    
+<!-- Table Section -->
+<table>
+  
+    <thead>
+        <tr>
+            <th>আল হাদিস</th>
+        </tr>
+    </thead>
+  
+
+    
+    <tbody>
+        <tr>
+            <td><p class="tooltip"><a>ইলমুল হাদিস : সংজ্ঞা, শ্রেণিবিভাগ, গুরুত্ব, সহিহ হাদিসের বৈশিষ্ট্য এবং হাদিসের পরিভাষা সংক্রান্ত জ্ঞান : সনদ, মতন, রেওয়ায়েত, দেরায়েত, রাবি ইত্যাদি</a><span class="tooltiptext">নোট অপশনে গিয়ে সাহিত্যের শীটে পেয়ে যাবেন</span></p></td>
+        </tr>
+        <tr>
+            <td><a>হাদিস বর্ণনার পার্থক্যের কারণ</a></td>
+        </tr>
+        <tr>
+            <td><a>হাদিস সংরক্ষণ ও সংকলনের ইতিহাস</a></td>
+        </tr>
+        <tr>
+            <td><a>উপমহাদেশে ইলমে হাদিস চর্চা</a></td>
+        </tr>
+        <tr>
+            <td>দারস তৈরি : কমপক্ষে ১৫টি</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+  
+<div class="header">
+    অধ্যয়ন
+</div>
+
+<!-- Search Box Section -->
+<div class="search-box">
+    <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for books...">
+</div>
+
+<!-- Error Button Section -->
+<div class="error-button-container">
+    <button class="error-button">ত্রুটি থাকলে জানান</button>
+</div>
+
+<!-- Book List Section -->
+<div id="bookList">
+    <!-- Book Links -->
+    <a class="book-link" href="https://www.icsbook.info/read-book/649">সহিহ আল-বুখারি , ১ম খণ্ড- কিতাবুল ঈমান</a>
+    <a class="book-link" href="https://www.icsbook.info/read-book/648">১ম খণ্ড- কিতাবুল ইলম</a>
+    <a class="book-link" href="https://www.icsbook.info/read-book/651">১ম খণ্ড- কিতাবুস সালাত</a>
+     <a class="book-link" href="https://www.icsbook.info/read-book/650">১ম খণ্ড- জানাজা</a>
+    <a class="book-link" href="https://www.icsbook.info/read-book/653">২য় খণ্ড -কিতাবুজ জাকাত</a>
+    <a class="book-link" href="https://www.icsbook.info/read-book/654">২য় খণ্ড -কিতাবুস সাওম</a>
+    <a class="book-link" href="https://www.icsbook.info/read-book/652">২য় খণ্ড -কিতাবুল বুয়ু</a>
+    <a class="book-link" href="https://www.icsbook.info/read-book/655">৩য় খণ্ড-কিতাবুল জিহাদ</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/658">৫ম খণ্ড - কিতাবুল লিবাস</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/656">৫ম খণ্ড - কিতাবুল আদব</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/659">৬ষ্ঠ খণ্ড - কিতাবুর রিকাক</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/657">৬ষ্ঠ খণ্ড - কিতাবুল আহকাম</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/663"> সহিহ আল মুসলিম - ৪র্থ খণ্ড- কিতাবুল হজ</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/664">৫ম খণ্ড- কিতাবুন নিক্বাহ</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/202">রিয়াদুস সালেহীন - রিয়াদুস সালেহীন (২য় খণ্ড)- ইমাম মুহিউদ্দীন ইয়াহইয়া আন-নববী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/203">রিয়াদুস সালেহীন (৩য় খণ্ড)- ইমাম মুহিউদ্দীন ইয়াহইয়া আন-নববী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/204">রিয়াদুস সালেহীন (৪র্থ খণ্ড)- ইমাম মুহিউদ্দীন ইয়াহইয়া আন-নববী</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/153">হাদীস শরীফ - হাদীস শরীফ (২য় খণ্ড)- মাওলানা মুহাম্মদ আবদুর রহীম</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/155">হাদীস শরীফ (৩য় খণ্ড)- মাওলানা মুহাম্মদ আবদুর রহীম</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/145">মেশকাত শরীফ - (১ম খণ্ড)</a>
+  <a class="book-link" href="https://www.icsbook.info/read-book/146">- (২য় খণ্ড)</a>
+    <!-- Add more book links as needed -->
+</div>
+
+<!-- Information Button -->
+<div id="infoBtn"><i class="fas fa-info-circle"></i></div>
+
+<!-- Message Section -->
+<div id="message">
+    <span id="closeBtn">&times;</span> <!-- Close button -->
+    <p>বাটনে ক্লিক করার পর ডাউনলোড অপশন এবং অনলাইনে পড়ার অপশন পেয়ে যাবেন</p> <!-- Message content -->
+</div>
+
+<!-- JavaScript Code -->
+<script>
+    // JavaScript Code
+    // Variable to store the last clicked link
+    var lastClickedLink = null;
+
+    // Function to handle click event on links
+    function handleClick(event) {
+        // Remove last-clicked class from previous last clicked link if exists
+        if (lastClickedLink) {
+            lastClickedLink.classList.remove('last-clicked');
+        }
+        // Add last-clicked class to the clicked link
+        event.target.classList.add('last-clicked');
+        // Update lastClickedLink variable to store the current clicked link
+        lastClickedLink = event.target;
+    }
+
+    // Add event listeners to all book links
+    var bookLinks = document.querySelectorAll('.book-link');
+    bookLinks.forEach(function(link) {
+        link.addEventListener('click', handleClick);
+    });
+
+    function searchBooks() {
+        var input, filter, bookList, bookLinks, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        bookList = document.getElementById('bookList');
+        bookLinks = bookList.getElementsByTagName('a');
+
+        for (i = 0; i < bookLinks.length; i++) {
+            txtValue = bookLinks[i].textContent || bookLinks[i].innerText;
+            if (fuzzySearch(txtValue.toUpperCase(), filter)) {
+                bookLinks[i].style.display = '';
+            } else {
+                bookLinks[i].style.display = 'none';
+            }
+        }
+    }
+
+    function fuzzySearch(text, query) {
+        // Fuzzy search algorithm (Levenshtein distance)
+        if (text.includes(query)) {
+            return true; // Direct match
+        }
+
+        const maxDistance = Math.ceil(query.length / 4);
+        const distances = [];
+
+        for (let i = 0; i <= text.length; i++) {
+            let row = [i];
+            for (let j = 0; j < query.length; j++) {
+                if (i === 0) {
+                    row.push(j + 1);
+                } else {
+                    row.push(0);
+                }
+            }
+            distances.push(row);
+        }
+
+        for (let i = 1; i <= text.length; i++) {
+            for (let j = 1; j <= query.length; j++) {
+                const cost = text[i - 1] === query[j - 1] ? 0 : 1;
+                distances[i][j] = Math.min(
+                    distances[i - 1][j] + 1,
+                    distances[i][j - 1] + 1,
+                    distances[i - 1][j - 1] + cost
+                );
+            }
+        }
+
+        return Math.min(...distances[text.length]) <= maxDistance;
+    }
+
+    // Function to show the message
+    function showMessage() {
+        var message = document.getElementById('message');
+        message.style.display = 'block';
+        // Auto close message after 4 seconds
+        setTimeout(hideMessage, 6000);
+    }
+
+    // Function to hide the message
+    function hideMessage() {
+        var message = document.getElementById('message');
+        message.style.display = 'none';
+    }
+
+    // Event listener for the information button
+    var infoBtn = document.getElementById('infoBtn');
+    infoBtn.addEventListener('click', showMessage);
+
+    // Event listener for the close button
+    var closeBtn = document.getElementById('closeBtn');
+    closeBtn.addEventListener('click', hideMessage);
+  
+    // Function to force desktop view if requested
+    document.addEventListener('DOMContentLoaded', function () {
+        const bookLinks = document.querySelectorAll('.book-link');
+
+        bookLinks.forEach(function (link) {
+            const url = new URL(link.href);
+            if (url.searchParams.get('desktop') === 'true') {
+                forceDesktopView();
+            }
+        });
+    });
+
+    function forceDesktopView() {
+        var viewport = document.querySelector("meta[name=viewport]");
+        if (viewport) {
+            viewport.setAttribute('content', 'width=1024');
+        }
+    }
+  
+ 
+</script>
+
+
+
+</body>
+</html>
